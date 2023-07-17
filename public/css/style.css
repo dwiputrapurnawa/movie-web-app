@@ -1,0 +1,15 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: medium;
+}
+
+p {
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+.icon-size {
+    width: 24px;
+    height: 24px;
+}
+
