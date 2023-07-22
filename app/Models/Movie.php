@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Movie extends Model
 {
     use HasFactory;
+    use Sluggable;
 
     protected $guarded = ["id"];
 
@@ -29,5 +31,14 @@ class Movie extends Model
 
     public function scopeFilter($query, $filter) {
         return $query->where("title", "like", "%" . $filter . "%")->orWhere("synopsis", "like", "%" . $filter . "%");
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

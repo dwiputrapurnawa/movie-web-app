@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -11,7 +12,9 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        return view("dashboard.movie.index", [
+            "movies" => Movie::latest()->paginate(10),
+        ]);
     }
 
     /**
@@ -19,7 +22,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view("dashboard.movie.create");
     }
 
     /**
@@ -27,15 +30,33 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            "title" => "required",
+            "rating" => "required|min:1|max:10",
+            "metascore" => "required|min:1|max:100",
+            "duration" => "required",
+            "release_date" => "required",
+            "synopsis" => "required",
+            "video" => "required"
+        ]);
+
+        if($request->file("img")) {
+            $validatedData["img"] = $request->file("img")->store("movie_images");
+        }
+
+        Movie::create($validatedData);
+
+        return redirect("/dashboard/movie")->with("success", "New post has been added!");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Movie $movie)
     {
-        //
+        return view("dashboard.movie.show", [
+            "movie" => $movie
+        ]);
     }
 
     /**
@@ -57,8 +78,10 @@ class MovieController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Movie $movie)
     {
-        //
+        Movie::destroy($movie->id);
+
+        return back()->with("success", "Successfully deleted");
     }
 }

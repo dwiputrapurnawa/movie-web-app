@@ -46,7 +46,7 @@
                 <div class="card col-lg-4 ms-2 me-1 mb-2" style="width: 15rem;">
 
                   <a href="/movie/{{ $movie->slug }}" class="text-decoration-none">
-                    <img src="https://cdn.marvel.com/content/1x/snh_online_6072x9000_posed_01.jpg" class="card-img-top mt-2" alt="...">
+                    <img src="{{ $movie->img ?? "images/no-image.jpg"  }}" class="card-img-top mt-2" alt="movie-img">
                   
                     <div class="card-body">
                         <h5 class="card-title text-dark">{{ $movie->title }}</h5>
@@ -77,7 +77,7 @@
               <a class="text-decoration-none" href="/movie/{{ $popularMovie->slug }}">
                 <div class="row g-0">
                   <div class="col-md-4">
-                    <img src="https://cdn.marvel.com/content/1x/snh_online_6072x9000_posed_01.jpg" class="img-fluid rounded-start" alt="...">
+                    <img src="{{ $movie->img ?? "images/no-image.jpg"  }}" class="img-fluid rounded-start" alt="...">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">

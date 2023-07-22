@@ -11,12 +11,12 @@
 
             <div class="bg-white rounded w-100">
                 <video class="w-100" controls>
-                    <source src="/videos/[MegaBatch]KmnRd-BlkSn-01.mp4" type="video/mp4">
+                    <source src="/{{ $movie->video }}" type="video/mp4">
                   Your browser does not support the video tag.
                   </video>
         
                   <div class="p-3">
-                    <h3>{{ $movie->title }}</h3>
+                    <h3 class="mb-3">{{ $movie->title }}</h3>
 
                     <div class="row">
                         <div class="col-lg-8 mb-3">
@@ -29,9 +29,9 @@
                                 
                                 @auth
                                     @if (auth()->user()->movie->contains("id", $movie->id))
-                                        <button class="btn btn-dark mb-3" type="submit" disabled><i class="bi bi-stopwatch-fill"></i> Watch Later <i class="bi bi-check"></i></button>
+                                        <button class="btn btn-dark mb-3 d-block ms-auto" type="submit" disabled><i class="bi bi-stopwatch-fill"></i> Watch Later <i class="bi bi-check"></i></button>
                                     @else
-                                        <button class="btn btn-dark mb-3" type="submit"><i class="bi bi-stopwatch"></i> Watch Later</button>
+                                        <button class="btn btn-dark mb-3 d-block ms-auto" type="submit"><i class="bi bi-stopwatch"></i> Watch Later</button>
                                     @endif
                                 @endauth
 
@@ -135,61 +135,24 @@
                 </div>
 
                 <div class="p-3">
-                    <img class="img-fluid mb-3" src="https://cdn.marvel.com/content/1x/snh_online_6072x9000_posed_01.jpg" alt="">
+                    <img class="img-fluid mb-3" src="/{{ $movie->img ?? "images/no-image.jpg"  }}" alt="movie-img">
 
                     <h3>{{ $movie->title }}</h3>
 
-                    <hr>
-
                     <div class="mb-3">
                         @foreach ($movie->genre as $genre)
-                            <a href="/genre/{{ $genre->slug }}"><span class="badge bg-secondary">{{ $genre->name }}</span></a>
+                            <a href="/genre/{{ $genre->slug }}"><span class="badge bg-dark">{{ $genre->name }}</span></a>
                         @endforeach
                     </div>
+
+                    <ul>
+                        <li class="movie-list">Release Date: {{ Carbon\Carbon::parse($movie->release_date)->format('F j, Y ')}}</li>
+                        <li class="movie-list">Duration: {{ round($movie->duration/60) }} hours</li>
+                        <li class="movie-list">Rating: {{ $movie->rating }}/10</li>
+                        <li class="movie-list">Metascore: {{ $movie->metascore }}/100</li>
+                    </ul>
                     
                     <p>{{ $movie->synopsis }}</p>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-lg">
-                            <label>Release Date</label>
-                            <span class="badge text-bg-info">{{ $movie->release_date }}</span>
-                        </div>
-
-                        <div class="col-lg">
-                            <label>Duration</label>
-                            <span class="badge text-bg-secondary">{{ round($movie->duration/60, 2) . " Hours"}}</span>
-                        </div>
-
-                        <div class="col-lg">
-                            <label>Rating</label>
-
-                            @if ($movie->rating >= 8)
-                                <span class="badge text-bg-success">{{ $movie->rating . "/10" }}</span>
-                            @elseif($movie->rating >= 5)
-                                <span class="badge text-bg-warning">{{ $movie->rating . "/10" }}</span>
-                            @else
-                                <span class="badge text-bg-alert">{{ $movie->rating . "/10" }}</span>
-                            @endif
-                
-                            
-
-                        </div>
-
-                        <div class="col-lg">
-                            <label>Metascore</label>
-                        
-                            @if ($movie->metascore >= 80)
-                            <span class="badge text-bg-success">{{ $movie->metascore . "/100" }}</span>
-                            @elseif($movie->metascore >= 50)
-                                <span class="badge text-bg-warning">{{ $movie->metascore . "/100" }}</span>
-                            @else
-                                <span class="badge text-bg-danger">{{ $movie->metascore . "/100" }}</span>
-                            @endif
-                        
-                        </div>
-                    </div>
 
                 </div>
 

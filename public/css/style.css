@@ -13,3 +13,11 @@ p {
     height: 24px;
 }
 
+.movie-list {
+    list-style-type: square;
+    font-size: medium;
+}
+
+.movie-list::marker {
+    color: green;
+}

@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MovieListController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WatchLaterController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +49,8 @@ Route::get("/genre/{genre:slug}", [GenreController::class, "index"]);
 // Watch Later Routes
 Route::post("/watchlater", [WatchLaterController::class, "watchLater"])->middleware("auth");
 Route::get("/watchlater", [WatchLaterController::class, "index"])->middleware("auth");
+
+Route::get("/dashboard", [DashboardController::class, "index"]);
+Route::resource("/dashboard/movie", MovieController::class);
+
+Route::post("/upload", [UploadController::class, "uploadFile"]);
