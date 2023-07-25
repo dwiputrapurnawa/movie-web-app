@@ -35,6 +35,11 @@
             </a>
             
             <ul class="dropdown-menu">
+              
+              @can("admin")
+              <li><a href="/dashboard" class="dropdown-item"><i class="bi bi-graph-up-arrow"></i> Dashboard</a></li>
+              @endcan
+
               <li><a href="/watchlater" class="dropdown-item"><i class="bi bi-stopwatch"></i> Watch Later</a></li>
 
               <form action="/logout" method="post">

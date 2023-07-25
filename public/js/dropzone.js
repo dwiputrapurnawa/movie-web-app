@@ -8,6 +8,7 @@ Dropzone.options.myDropzone = {
     acceptedFiles: ".mp4,.ogg",
     // Customize the success message
     success: function (file, response) {
+      console.log(response.path);
       $(function() {
         $("#video").val(response.path);
       })

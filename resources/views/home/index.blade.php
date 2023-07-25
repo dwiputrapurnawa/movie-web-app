@@ -5,6 +5,14 @@
 @endsection
 
 @section('content')
+
+  @if (session()->has("error"))
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session("error") }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif
+
     <div class="row mb-3">
         <div class="col-md-8">
     
@@ -50,6 +58,7 @@
                   
                     <div class="card-body">
                         <h5 class="card-title text-dark">{{ $movie->title }}</h5>
+                        <p><small class="text-body-secondary">{{ $movie->created_at->diffForHumans() }}</small></p>
                     </div>
                   </a>
                 </div>
@@ -77,7 +86,7 @@
               <a class="text-decoration-none" href="/movie/{{ $popularMovie->slug }}">
                 <div class="row g-0">
                   <div class="col-md-4">
-                    <img src="{{ $movie->img ?? "images/no-image.jpg"  }}" class="img-fluid rounded-start" alt="...">
+                    <img src="/{{ $popularMovie->img ?? "images/no-image.jpg"  }}" class="img-fluid rounded-start" alt="movie-img">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">

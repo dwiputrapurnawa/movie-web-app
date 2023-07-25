@@ -36,7 +36,6 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-
         
         $validatedData = $request->validate([
             "title" => "required|max:255",

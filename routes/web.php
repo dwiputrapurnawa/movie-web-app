@@ -49,12 +49,12 @@ Route::post("/watchlater", [WatchLaterController::class, "watchLater"])->middlew
 Route::get("/watchlater", [WatchLaterController::class, "index"])->middleware("auth");
 
 // Dashboard Routes
-Route::get("/dashboard", [DashboardController::class, "index"])->middleware("auth");
-Route::resource("/dashboard/movie", MovieController::class)->middleware("auth");
-Route::post("/dashboard/genre/create", [GenreController::class, "create"])->middleware("auth");
+Route::get("/dashboard", [DashboardController::class, "index"])->middleware("isAdmin");
+Route::resource("/dashboard/movie", MovieController::class)->middleware("isAdmin");
+Route::post("/dashboard/genre/create", [GenreController::class, "create"])->middleware("isAdmin");
 
 // Upload File Routes
-Route::post("/upload", [UploadController::class, "uploadFile"])->middleware("auth");
+Route::post("/upload", [UploadController::class, "uploadFile"]);
 
 // Genre Routes
 Route::get("/genre/{genre:slug}", [GenreController::class, "index"]);

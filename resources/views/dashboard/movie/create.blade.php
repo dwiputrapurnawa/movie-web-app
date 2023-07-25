@@ -27,7 +27,7 @@
 
   <div class="mb-3">
     <label for="img" class="form-label">Image</label>
-    <input class="form-control" type="file" id="img" name="img">
+    <input class="form-control" type="file" id="img" name="img" accept=".png,.jpg">
   </div>
 
   <input type="hidden" id="video" name="video">
@@ -109,7 +109,7 @@
 
       <div class="mb-3">
         <label for="synopsis" class="form-label">Synopsis</label>
-        <textarea class="form-control @error("synopsis") is-invalid @enderror" id="synopsis" style="height: 100px" name="synopsis" required></textarea>
+        <textarea class="form-control @error("synopsis") is-invalid @enderror" id="synopsis" style="height: 100px" name="synopsis" required>{{ old("synopsis") }}</textarea>
         @error('synopsis')
         <div class="invalid-feedback">
           {{ $message }}
