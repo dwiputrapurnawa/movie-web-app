@@ -4,7 +4,7 @@
 
     <div class="p-3 row">
        <div class="col-lg-2">
-        <img class="img-fluid" src="https://cdn.marvel.com/content/1x/snh_online_6072x9000_posed_01.jpg">
+        <img class="img-fluid" src="/{{ $movie->img }}">
        </div>
 
        <div class="col-lg">
@@ -29,7 +29,7 @@
     <hr>
 
     <video class="w-100 my-3" controls>
-        <source src="/videos/[MegaBatch]KmnRd-BlkSn-01.mp4" type="video/mp4">
+        <source src="/{{ $movie->video }}" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 

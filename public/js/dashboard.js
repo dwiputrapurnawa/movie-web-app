@@ -29,5 +29,11 @@ $(function() {
         }
 
     });
+
+    $("#genre").on("change", function() {
+        const selectedOptions = $(this).val();
+        $("input[name='genre']").val(selectedOptions)
+        console.log(selectedOptions);
+    })
 });
 

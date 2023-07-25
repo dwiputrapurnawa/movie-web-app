@@ -4,7 +4,8 @@ Dropzone.options.myDropzone = {
     chunkSize: 2000000, // Chunk size in bytes (e.g., 2MB)
     parallelChunkUploads: true, // Upload multiple chunks in parallel
     retryChunks: true, // Retry chunks on failure
-    maxFilesize: 5000,
+    maxFilesize: 2500,
+    acceptedFiles: ".mp4,.ogg",
     // Customize the success message
     success: function (file, response) {
       $(function() {

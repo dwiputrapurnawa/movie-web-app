@@ -21,7 +21,7 @@
                     <div class="card mb-3" style="max-width: 540px;">
                         <div class="row g-0">
                           <div class="col-md-4">
-                            <img src="https://cdn.marvel.com/content/1x/snh_online_6072x9000_posed_01.jpg" class="img-fluid rounded-start" alt="...">
+                            <img src="/{{ $movie->img ?? "images/no-image.jpg" }}" class="img-fluid rounded-start" alt="movie-img">
                           </div>
                           <div class="col-md-8">
                             <div class="card-body">
