@@ -1,4 +1,4 @@
 Screenshot :
 
-![Screenshot](screenshot.png)
-![Screenshot](screenshot2.png)
+![Screenshot](public/images/screenshot.png)
+![Screenshot](public/images/screenshot2.png)
