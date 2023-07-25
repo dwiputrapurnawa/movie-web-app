@@ -5,5 +5,34 @@
     <h1 class="h2">Dashboard</h1>
 
     Welcome, {{ auth()->user()->name }}
-  </div>
+</div>
+
+<div class="row p-3">
+
+    <div class="col-lg-2 p-3 bg-light text-center rounded me-2 mb-3">
+        <h1>{{ $users->count() }}</h1>
+        <p>Users</p>
+    </div>
+
+    <div class="col-lg-2 p-3 bg-light text-center rounded me-2 mb-3">
+        <h1>{{ $movies->count() }}</h1>
+        <p>Movies</p>
+    </div>
+
+    <div class="col-lg-2 p-3 bg-light text-center rounded me-2 mb-3">
+        <h1>{{ $comments->count() }}</h1>
+        <p>Comments</p>
+    </div>
+
+</div>
+
+<div class="mb-3" style="width: 100%;">
+    {!! $chart->container() !!}
+</div>
+
+
+
+
+
+{!! $chart->script() !!}
 @endsection

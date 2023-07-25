@@ -13,4 +13,15 @@ class GenreController extends Controller
             "movies" => $genre->movie()->paginate(9),
         ]);
     }
+
+    public function create(Request $request) {
+
+        $validateData = $request->validate([
+            "name" => "required|min:3",
+        ]);
+
+        Genre::create($validateData);
+
+        return back()->with("success", "Successfully add new genre!");
+    }
 }

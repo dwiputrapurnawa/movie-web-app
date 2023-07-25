@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, "index"]);
 
 // Login Routes
-Route::get('/login', [LoginController::class, "index"])->middleware("guest");
+Route::get('/login', [LoginController::class, "index"])->name("login")->middleware("guest");
 Route::post("/login", [LoginController::class, "authenticate"])->middleware("guest");
 Route::post("/logout", [LoginController::class, "logout"])->middleware("auth");
 
@@ -42,15 +42,20 @@ Route::get("/movie/{movie:slug}", [MovieListController::class, "show"]);
 
 // Comment Routes
 Route::post("/comment", [CommentController::class, "comment"])->middleware("auth");
-Route::delete("/comment", [CommentController::class, "delete"]);
-
-Route::get("/genre/{genre:slug}", [GenreController::class, "index"]);
+Route::delete("/comment", [CommentController::class, "delete"])->middleware("auth");
 
 // Watch Later Routes
 Route::post("/watchlater", [WatchLaterController::class, "watchLater"])->middleware("auth");
 Route::get("/watchlater", [WatchLaterController::class, "index"])->middleware("auth");
 
-Route::get("/dashboard", [DashboardController::class, "index"]);
-Route::resource("/dashboard/movie", MovieController::class);
+// Dashboard Routes
+Route::get("/dashboard", [DashboardController::class, "index"])->middleware("auth");
+Route::resource("/dashboard/movie", MovieController::class)->middleware("auth");
+Route::post("/dashboard/genre/create", [GenreController::class, "create"])->middleware("auth");
 
-Route::post("/upload", [UploadController::class, "uploadFile"]);
+// Upload File Routes
+Route::post("/upload", [UploadController::class, "uploadFile"])->middleware("auth");
+
+// Genre Routes
+Route::get("/genre/{genre:slug}", [GenreController::class, "index"]);
+

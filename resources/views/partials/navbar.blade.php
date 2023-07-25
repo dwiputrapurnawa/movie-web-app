@@ -47,7 +47,7 @@
 
           @else
           <li class="nav-item">
-            <a href="/login" class="nav-link">Login</a>
+            <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-left"></i> Login</a>
           </li>
           @endauth
 

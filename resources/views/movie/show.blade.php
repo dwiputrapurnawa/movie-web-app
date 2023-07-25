@@ -141,7 +141,7 @@
 
                     <div class="mb-3">
                         @foreach ($movie->genre as $genre)
-                            <a href="/genre/{{ $genre->slug }}"><span class="badge bg-dark">{{ $genre->name }}</span></a>
+                            <a href="/genre/{{ $genre->slug }}"><span class="badge bg-dark">{{ ucfirst($genre->name) }}</span></a>
                         @endforeach
                     </div>
 

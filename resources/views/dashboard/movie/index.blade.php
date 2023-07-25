@@ -13,6 +13,35 @@
     @endif
 
     <a class="btn btn-dark mb-4" href="/dashboard/movie/create">Add Movie</a>
+    <button class="btn btn-dark mb-4" data-bs-toggle="modal" data-bs-target="#genreModal">Add Genre</button>
+
+
+    <div class="modal fade" id="genreModal" tabindex="-1" aria-labelledby="genreModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Genre</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="/dashboard/genre/create" method="post">
+            @csrf
+          <div class="modal-body">
+ 
+              <div class="mb-3">
+                <label for="name" class="form-label">Genre Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+              </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-dark">Save genre</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
 
 <div class="table-responsive small">
     <table class="table table-striped table-sm">

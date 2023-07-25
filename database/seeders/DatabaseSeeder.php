@@ -21,7 +21,32 @@ class DatabaseSeeder extends Seeder
 
         Movie::factory(10)->create();
 
-        Genre::factory(5)->create();
+        // Genre::factory(5)->create();
+
+        Genre::create([
+            "name" => "action",
+            "slug" => "action"
+        ]);
+
+        Genre::create([
+            "name" => "drama",
+            "slug" => "drama"
+        ]);
+
+        Genre::create([
+            "name" => "comedy",
+            "slug" => "comedy"
+        ]);
+
+        Genre::create([
+            "name" => "thriller",
+            "slug" => "thriller"
+        ]);
+
+        Genre::create([
+            "name" => "romance",
+            "slug" => "romance"
+        ]);
 
         MovieGenre::factory(20)->create();
 

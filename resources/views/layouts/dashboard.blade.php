@@ -61,10 +61,13 @@
 
                 <ul class="nav flex-column mb-auto">
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="/logout">
-                            <span data-feather="log-out"></span>
-                            Logout
-                        </a>
+                       <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="nav-link d-flex align-items-center gap-2" href="/logout">
+                          <span data-feather="log-out"></span>
+                          Logout
+                        </button>
+                      </form>
                     </li>
                 </ul>
               </div>
@@ -86,6 +89,7 @@
     <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.5/datatables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/js/dashboard.js"></script>
     <script src="/js/dropzone.js"></script>
 </body>
