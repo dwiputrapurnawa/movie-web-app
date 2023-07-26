@@ -3,6 +3,13 @@
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Movie</h1>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="text-decoration-none text-dark" href="/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+      </ol>
+    </nav>
 </div>
 
     @if (session()->has("success"))
@@ -12,8 +19,8 @@
       </div>
     @endif
 
-    <a class="btn btn-dark mb-4" href="/dashboard/movie/create">Add Movie</a>
-    <button class="btn btn-dark mb-4" data-bs-toggle="modal" data-bs-target="#genreModal">Add Genre</button>
+    <a class="btn btn-dark mb-4" href="/dashboard/movie/create"><i class="bi bi-camera-reels"></i> Add Movie</a>
+    <button class="btn btn-dark mb-4" data-bs-toggle="modal" data-bs-target="#genreModal"><i class="bi bi-plus-square-fill"></i> Add Genre</button>
 
 
     <div class="modal fade" id="genreModal" tabindex="-1" aria-labelledby="genreModal" aria-hidden="true">
@@ -35,13 +42,12 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-dark">Save genre</button>
+            <button type="submit" class="btn btn-dark">Save Genre</button>
           </div>
         </form>
         </div>
       </div>
     </div>
-
 
 <div class="table-responsive small">
     <table class="table table-striped table-sm">

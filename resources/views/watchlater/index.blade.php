@@ -26,6 +26,13 @@
                           <div class="col-md-8">
                             <div class="card-body">
                               <h5 class="card-title">{{ $movie->title }}</h5>
+                              @for ($i = 0; $i < $movie->rating; $i++)
+                                <i class="bi bi-star-fill text-warning"></i>
+                              @endfor
+    
+                              @for ($i = 0; $i < (5-$movie->rating); $i++)
+                                  <i class="bi bi-star text-warning"></i>
+                              @endfor
                               <p class="card-text"><small class="text-body-secondary">{{ $movie->created_at->diffForHumans() }}</small></p>
                             </div>
                           </div>

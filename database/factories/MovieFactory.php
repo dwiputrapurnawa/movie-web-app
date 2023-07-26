@@ -19,7 +19,7 @@ class MovieFactory extends Factory
         return [
             "title" => fake()->sentence(),
             "slug" => fake()->slug(),
-            "rating" => mt_rand(1, 10),
+            "rating" => mt_rand(1, 5),
             "metascore" => mt_rand(10, 100),
             "synopsis" => fake()->paragraph(),
             "duration" => mt_rand(60, 240),

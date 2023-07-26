@@ -7,7 +7,7 @@
     Welcome, {{ auth()->user()->name }}
 </div>
 
-<div class="row p-3">
+<div class="row p-3 d-flex">
 
     <div class="col-lg-2 p-3 bg-light text-center rounded me-2 mb-3">
         <h1>{{ $users->count() }}</h1>
@@ -26,8 +26,15 @@
 
 </div>
 
-<div class="mb-3" style="width: 100%;">
-    {!! $chart->container() !!}
+<div class="bg-light">
+
+    <div class="bg-dark p-2 rounded-top">
+        <h5 class="text-white">Graph</h5>
+    </div>
+
+    <div class="mb-3" style="width: 100%;">
+        {!! $chart->container() !!}
+    </div>
 </div>
 
 

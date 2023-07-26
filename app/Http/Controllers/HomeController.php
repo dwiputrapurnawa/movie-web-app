@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function index() {
         return view("home.index", [
             "movies" => Movie::latest()->paginate(6)->withQueryString(),
-            "popularMovies" => Movie::mostPopular(8)->limit(5)->get(),
+            "popularMovies" => Movie::mostPopular(4)->limit(5)->orderBy("rating", "desc")->get(),
         ]);
     }
 }

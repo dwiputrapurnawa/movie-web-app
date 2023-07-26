@@ -3,9 +3,17 @@
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Edit {{ $movie->title }}</h1>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="text-decoration-none text-dark" href="/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a class="text-decoration-none text-dark" href="/dashboard/movie">Movie</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+      </ol>
+    </nav>
 </div>
 
-<img src="/{{ $movie->img }}" id="preview-img" class="d-block mb-3" width="300px" >
+<img src="/{{ $movie->img ?? "images/no-image.jpg" }}" id="preview-img" class="d-block mb-3" width="300px" >
 
 <label for=myDropzone class="form-label">Video</label>
 <form action="/upload" method="post" class="dropzone mb-3 col-lg-8" id="myDropzone">
@@ -64,7 +72,7 @@
         <div class="col-lg">
           <div class="mb-3">
             <label for="rating" class="form-label">Rating</label>
-            <input type="number" class="form-control @error("rating") is-invalid @enderror" id="rating" max="10" min="1" name="rating" value="{{ $movie->rating }}" required>
+            <input type="number" class="form-control @error("rating") is-invalid @enderror" id="rating" max="5" min="0" name="rating" value="{{ $movie->rating }}" required>
             @error('rating')
             <div class="invalid-feedback">
               {{ $message }}

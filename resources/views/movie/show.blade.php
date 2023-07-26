@@ -134,11 +134,38 @@
                     <h6 class="text-white">Movie</h6>
                 </div>
 
-                <div class="p-3">
-                    <img class="img-fluid mb-3" src="/{{ $movie->img ?? "images/no-image.jpg"  }}" alt="movie-img">
+                <div class="p-3 position-relative">
+                    <img class="img-fluid mb-3 position-relative w-100" src="/{{ $movie->img ?? "images/no-image.jpg"  }}" alt="movie-img">
+
+                    @if ($movie->metascore >= 80)
+                    <div class="position-absolute bg-success p-2 rounded" style="top: 19px; right: 19px;">
+                        <h3 class="text-white">{{ $movie->metascore }}</h3>
+                    </div>
+
+                    @elseif($movie->metascore > 40)
+                    <div class="position-absolute bg-warning p-2 rounded" style="top: 19px; right: 19px;">
+                        <h3 class="text-white">{{ $movie->metascore }}</h3>
+                    </div>
+
+                    @else
+                    <div class="position-absolute bg-danger p-2 rounded" style="top: 19px; right: 19px;">
+                        <h3 class="text-white">{{ $movie->metascore }}</h3>
+                    </div>
+                    @endif
+
+                  
 
                     <h3>{{ $movie->title }}</h3>
 
+                    <div class="mb-3">
+                        @for ($i = 0; $i < $movie->rating; $i++)
+                            <i class="bi bi-star-fill text-warning" style="font-size: 25px"></i>
+                        @endfor
+
+                        @for ($i = 0; $i < (5-$movie->rating); $i++)
+                            <i class="bi bi-star text-warning" style="font-size: 25px"></i>
+                        @endfor
+                    </div>
                     <div class="mb-3">
                         @foreach ($movie->genre as $genre)
                             <a href="/genre/{{ $genre->slug }}"><span class="badge bg-dark">{{ ucfirst($genre->name) }}</span></a>
@@ -148,8 +175,6 @@
                     <ul>
                         <li class="movie-list">Release Date: {{ Carbon\Carbon::parse($movie->release_date)->format('F j, Y ')}}</li>
                         <li class="movie-list">Duration: {{ round($movie->duration/60) }} hours</li>
-                        <li class="movie-list">Rating: {{ $movie->rating }}/10</li>
-                        <li class="movie-list">Metascore: {{ $movie->metascore }}/100</li>
                     </ul>
                     
                     <p>{{ $movie->synopsis }}</p>

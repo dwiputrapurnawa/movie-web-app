@@ -8,6 +8,7 @@ p {
     text-align: justify;
 }
 
+
 .icon-size {
     width: 24px;
     height: 24px;
@@ -20,4 +21,14 @@ p {
 
 .movie-list::marker {
     color: green;
+}
+
+.card {
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }

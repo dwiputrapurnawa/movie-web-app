@@ -2,7 +2,15 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Add New Movie</h1>
+    <h1 class="h2">Add Movie</h1>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="text-decoration-none text-dark" href="/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a class="text-decoration-none text-dark" href="/dashboard/movie">Movie</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Movie</li>
+      </ol>
+    </nav>
 </div>
 
 <img id="preview-img" class="d-block mb-3" width="300px" >
@@ -62,7 +70,7 @@
         <div class="col-lg">
           <div class="mb-3">
             <label for="rating" class="form-label">Rating</label>
-            <input type="number" class="form-control @error("rating") is-invalid @enderror" id="rating" max="10" min="1" name="rating" value="{{ old("rating") }}" required>
+            <input type="number" class="form-control @error("rating") is-invalid @enderror" id="rating" max="5" min="0" name="rating" value="{{ old("rating") }}" required>
             @error('rating')
             <div class="invalid-feedback">
               {{ $message }}
@@ -116,6 +124,6 @@
         </div>
         @enderror
       </div>
-    <button type="submit" class="btn btn-dark">Post Movie</button>
+    <button type="submit" class="btn btn-dark"><i class="bi bi-camera-reels"></i> Post Movie</button>
 </form>
 @endsection
