@@ -11,7 +11,7 @@
 
             <div class="bg-white rounded w-100">
                 <video class="w-100" controls>
-                    <source src="/{{ $movie->video }}" type="video/mp4">
+                    <source src="{{ asset("storage/" . $movie->video) }}" type="video/mp4">
                   Your browser does not support the video tag.
                   </video>
         
@@ -135,7 +135,7 @@
                 </div>
 
                 <div class="p-3 position-relative">
-                    <img class="img-fluid mb-3 position-relative w-100" src="/{{ $movie->img ?? "images/no-image.jpg"  }}" alt="movie-img">
+                    <img class="img-fluid mb-3 position-relative w-100" src="{{ $movie->img ? asset("storage/" . $movie->img) : "/images/no-image.jpg" }}" alt="movie-img">
 
                     @if ($movie->metascore >= 80)
                     <div class="position-absolute bg-success p-2 rounded" style="top: 19px; right: 19px;">
@@ -168,7 +168,7 @@
                     </div>
                     <div class="mb-3">
                         @foreach ($movie->genre as $genre)
-                            <a href="/genre/{{ $genre->slug }}"><span class="badge bg-dark">{{ ucfirst($genre->name) }}</span></a>
+                            <a href="/movie?genre={{ $genre->name }}"><span class="badge bg-dark">{{ ucfirst($genre->name) }}</span></a>
                         @endforeach
                     </div>
 

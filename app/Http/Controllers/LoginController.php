@@ -17,13 +17,15 @@ class LoginController extends Controller
             "password" => "required",
         ]);
 
-        if(Auth::attempt($credentials)) {
+        $remember = $request->has("remember");
+
+        if(Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
             return redirect()->intended("/");
         }
 
-        return back()->with("loginError", "Login Failed");
+        return back()->withInput($request->only("email", "remember"))->with("loginError", "Login Failed");
     }
 
     public function logout(Request $request) {

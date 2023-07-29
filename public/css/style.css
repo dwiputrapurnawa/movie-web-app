@@ -32,3 +32,12 @@ p {
     transform: scale(1.1);
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+.page-item.active span {
+    background-color: black;
+    border-color: black;
+}
+
+.page-item a {
+    color: black;
+}

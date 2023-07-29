@@ -55,7 +55,3 @@ Route::post("/dashboard/genre/create", [GenreController::class, "create"])->midd
 
 // Upload File Routes
 Route::post("/upload", [UploadController::class, "uploadFile"]);
-
-// Genre Routes
-Route::get("/genre/{genre:slug}", [GenreController::class, "index"]);
-

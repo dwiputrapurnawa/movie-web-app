@@ -20,7 +20,7 @@
   @else
 
   <div class="row mb-3">
-    <div class="col-md-8">
+    <div class="col-lg-8">
 
 
           <div class="item-list row bg-white rounded">
@@ -33,7 +33,7 @@
             <div class="card col-lg-4 ms-2 me-1 mb-4" style="width: 15rem;">
 
               <a href="/movie/{{ $movie->slug }}" class="text-decoration-none">
-                <img src="{{ $movie->img ?? "images/no-image.jpg"  }}" class="card-img-top mt-2" alt="movie-img">
+                <img src="{{ $movie->img ? asset("storage/" . $movie->img) : "/images/no-image.jpg"  }}" class="card-img-top mt-2" alt="movie-img">
               
                 <div class="card-body">
                     <h5 class="card-title text-dark">{{ $movie->title }}</h5>
@@ -72,7 +72,7 @@
           <a class="text-decoration-none" href="/movie/{{ $popularMovie->slug }}">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="/{{ $popularMovie->img ?? "images/no-image.jpg"  }}" class="img-fluid rounded-start h-100" alt="movie-img">
+                <img src="{{ $popularMovie->img ? asset("storage/" . $popularMovie->img) : "/images/no-image.jpg"  }}" class="img-fluid rounded-start h-100" alt="movie-img">
               </div>
               <div class="col-md-8">
                 <div class="card-body">

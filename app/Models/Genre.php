@@ -21,6 +21,10 @@ class Genre extends Model
         return $this->belongsToMany(Movie::class, "movie_genres");
     }
 
+    public function scopeFilter($query, $filter) {
+        return $query->where("name", $filter)->first();
+    }
+
     public function sluggable(): array
     {
         return [

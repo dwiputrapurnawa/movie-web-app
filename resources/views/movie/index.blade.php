@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    Movie List
+    Movie List - {{ $title }}
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
   <div class="bg-white rounded-bottom">
 
     <div class="bg-dark p-2 rounded-top">
-        <h6 class="text-white">All Movie</h6>
+        <h6 class="text-white">{{ $title }}</h6>
     </div>
 
 
@@ -26,7 +26,7 @@
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
                       <div class="col-md-4">
-                        <img src="{{ $movie->img ?? "images/no-image.jpg"  }}" class="img-fluid rounded-start h-100" alt="...">
+                        <img src="{{ $movie->img ? asset("storage/" . $movie->img) : "/images/no-image.jpg"  }}" class="img-fluid rounded-start h-100" alt="movie-img">
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">

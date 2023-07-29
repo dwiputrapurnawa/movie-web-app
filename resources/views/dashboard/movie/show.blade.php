@@ -22,7 +22,7 @@
 
        <div class="col-lg-2 my-3">
         
-        <img class="img-fluid w-100 h-100" src="/{{ $movie->img ?? "images/no-image.jpg" }}">
+        <img class="img-fluid w-100 h-100" src="{{ $movie->img ? asset("storage/" . $movie->img) : "/images/no-image.jpg" }}">
        </div>
 
        <div class="col-lg my-3">
@@ -66,7 +66,7 @@
         </div>
 
         <video class="w-100" controls>
-            <source src="/{{ $movie->video }}" type="video/mp4">
+            <source src="{{ asset("storage/" . $movie->video) }}" type="video/mp4">
           Your browser does not support the video tag.
         </video>
     </div>

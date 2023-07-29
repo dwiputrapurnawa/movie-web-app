@@ -4,6 +4,6 @@ $(function() {
 
     const date = new Date().getFullYear();
 
-    $(".copyright-date").html("&copy; " + date + " Movie App, Inc");
+    $(".copyright-date").html("&copy; " + date + " Movie, Inc");
 
 })
