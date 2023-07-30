@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MovieListController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WatchLaterController;
@@ -46,7 +47,7 @@ Route::delete("/comment", [CommentController::class, "delete"])->middleware("aut
 
 // Watch Later Routes
 Route::post("/watchlater", [WatchLaterController::class, "watchLater"])->middleware("auth");
-Route::get("/watchlater", [WatchLaterController::class, "index"])->middleware("auth");
+Route::delete("/watchlater", [WatchLaterController::class, "destroy"])->middleware("auth");
 
 // Dashboard Routes
 Route::get("/dashboard", [DashboardController::class, "index"])->middleware("isAdmin");
@@ -55,3 +56,7 @@ Route::post("/dashboard/genre/create", [GenreController::class, "create"])->midd
 
 // Upload File Routes
 Route::post("/upload", [UploadController::class, "uploadFile"]);
+
+// Rating Routes
+Route::post("/rating", [RatingController::class, "submit"])->middleware("auth");
+Route::put("/rating", [RatingController::class, "update"])->middleware("auth");

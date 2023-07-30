@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -43,14 +44,14 @@
               <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto  ">
                 <ul class="nav flex-column">
                   <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/dashboard">
+                    <a class="nav-link d-flex align-items-center gap-2 {{ request()->is("dashboard") ? "active" : "" }}" href="/dashboard">
                         <span data-feather="home"></span>
                       Dashboard
                     </a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href="/dashboard/movie">
+                    <a class="nav-link d-flex align-items-center gap-2 {{ request()->is("dashboard/movie") ? "active" : "" }}" href="/dashboard/movie">
                         <span data-feather="film"></span>
                       Movie
                     </a>

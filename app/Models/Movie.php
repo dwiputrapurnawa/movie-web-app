@@ -25,6 +25,10 @@ class Movie extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function rating() {
+        return $this->hasMany(Rating::class);
+    }
+
     public function scopeMostPopular($query, $filter) {
         return $query->where("rating", ">=", $filter);
     }

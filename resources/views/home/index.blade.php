@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    Movie
+    Movie - Home
 @endsection
 
 @section('content')
@@ -32,17 +32,17 @@
             @foreach ($movies as $movie)
             <div class="card col-lg-4 ms-2 me-1 mb-4" style="width: 15rem;">
 
-              <a href="/movie/{{ $movie->slug }}" class="text-decoration-none">
+              <a href="/movie/{{ $movie->slug }}" class="text-decoration-none" data-bs-toggle="tooltip" data-bs-title="{{ $movie->title }}">
                 <img src="{{ $movie->img ? asset("storage/" . $movie->img) : "/images/no-image.jpg"  }}" class="card-img-top mt-2" alt="movie-img">
               
                 <div class="card-body">
-                    <h5 class="card-title text-dark">{{ $movie->title }}</h5>
+                    <h5 class="card-title text-dark">{{ \Illuminate\Support\Str::limit($movie->title, 30, $end='...') }}</h5>
                     <p><small class="text-body-secondary">{{ $movie->created_at->diffForHumans() }}</small></p>
-                    @for ($i = 0; $i < $movie->rating; $i++)
+                    @for ($i = 0; $i < $movie->rating->avg("value"); $i++)
                       <i class="bi bi-star-fill text-warning"></i>
                     @endfor
 
-                    @for ($i = 0; $i < (5-$movie->rating); $i++)
+                    @for ($i = 0; $i < (5-$movie->rating->avg("value")); $i++)
                       <i class="bi bi-star text-warning"></i>
                     @endfor
                 </div>
@@ -64,23 +64,23 @@
 
       <div class="bg-white rounded mx-2 mt-2">
         <div class="bg-dark text-white p-2 mb-2 rounded-top">
-          <h6 class="mt-2">Most Popular</h6>
+          <h6 class="mt-2">Most Popular By Rating</h6>
         </div>
 
         @foreach ($popularMovies as $popularMovie)
         <div class="card mb-2 p-2" style="max-width: 540px;">
-          <a class="text-decoration-none" href="/movie/{{ $popularMovie->slug }}">
+          <a class="text-decoration-none" href="/movie/{{ $popularMovie->slug }}" data-bs-toggle="tooltip" data-bs-title="{{ $movie->title }}">
             <div class="row g-0">
               <div class="col-md-4">
                 <img src="{{ $popularMovie->img ? asset("storage/" . $popularMovie->img) : "/images/no-image.jpg"  }}" class="img-fluid rounded-start h-100" alt="movie-img">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title text-dark">{{ $popularMovie->title }}</h5>
-                  @for ($i = 0; $i < $popularMovie->rating; $i++)
+                  <h5 class="card-title text-dark">{{ \Illuminate\Support\Str::limit($popularMovie->title, 30, $end='...') }}</h5>
+                  @for ($i = 0; $i < $popularMovie->avg_rating; $i++)
                     <i class="bi bi-star-fill text-warning"></i>
                   @endfor
-                  @for ($i = 0; $i < (5-$popularMovie->rating); $i++)
+                  @for ($i = 0; $i < (5-$popularMovie->avg_rating); $i++)
                     <i class="bi bi-star text-warning"></i>
                   @endfor
                   <p class="card-text"><small class="text-body-secondary">{{ $popularMovie->created_at->diffForHumans() }}</small></p>

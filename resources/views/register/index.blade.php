@@ -44,12 +44,6 @@
       <label for="password">Password</label>
     </div>
 
-    <div class="form-check text-start my-3">
-      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Remember me
-      </label>
-    </div>
     <button class="btn btn-dark w-100 py-2" type="submit">Register</button>
     <small class="d-block text-center mt-3">Already registered? <a class="text-decoration-none" href="/login">Login</a></small>
     <p class="copyright-date mt-5 mb-3 text-body-secondary"></p>

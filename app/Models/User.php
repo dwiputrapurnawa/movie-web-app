@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function movie() {
         return $this->belongsToMany(Movie::class, "watch_laters");
     }
+
+    public function rating() {
+        return $this->hasMany(Rating::class);
+    }
 }

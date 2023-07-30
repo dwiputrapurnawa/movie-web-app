@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string("slug")->unique();
             $table->string("img")->nullable();
             $table->string("video")->nullable();
-            $table->integer("rating")->min(0)->max(5)->default(0);
             $table->integer("metascore")->min(0)->max(100)->default(0);
             $table->longText("synopsis")->nullable();
             $table->integer("duration")->default(0);

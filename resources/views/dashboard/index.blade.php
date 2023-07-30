@@ -26,11 +26,7 @@
 
 </div>
 
-<div class="bg-light">
-
-    <div class="bg-dark p-2 rounded-top">
-        <h5 class="text-white">Graph</h5>
-    </div>
+<div class="bg-light rounded p-2">
 
     <div class="mb-3" style="width: 100%;">
         {!! $chart->container() !!}

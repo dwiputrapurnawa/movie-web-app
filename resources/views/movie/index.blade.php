@@ -22,7 +22,7 @@
 
         @foreach ($movies as $movie)
         <div class="col-lg-4">
-            <a class="text-decoration-none" href="/movie/{{ $movie->slug }}">
+            <a class="text-decoration-none" href="/movie/{{ $movie->slug }}" data-bs-toggle="tooltip" data-bs-title="{{ $movie->title }}">
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
                       <div class="col-md-4">
@@ -30,12 +30,12 @@
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
-                          <h5 class="card-title">{{ $movie->title }}</h5>
-                          @for ($i = 0; $i < $movie->rating; $i++)
+                          <h5 class="card-title">{{ \Illuminate\Support\Str::limit($movie->title, 30, $end='...') }}</h5>
+                          @for ($i = 0; $i < $movie->rating->avg("value"); $i++)
                             <i class="bi bi-star-fill text-warning"></i>
                           @endfor
 
-                          @for ($i = 0; $i < (5-$movie->rating); $i++)
+                          @for ($i = 0; $i < (5-$movie->rating->avg("value")); $i++)
                               <i class="bi bi-star text-warning"></i>
                           @endfor
                           <p class="card-text"><small class="text-body-secondary">{{ $movie->created_at->diffForHumans() }}</small></p>
