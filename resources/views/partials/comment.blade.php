@@ -1,4 +1,8 @@
-            @foreach ($comment->sortByDesc("created_at") as $comment)
+            <button class="btn-text replies mb-3" value="{{ $parent_id }}" style="margin-left: {{ $count . "0" }}%">Replies ({{ $comments->count() }})</button>
+
+            <div class="{{ "reply-container-" . $parent_id }}">
+                @foreach ($comments->sortByDesc("created_at") as $comment)
+                    
                     <div class="p-3" style="margin-left: {{ $count . "0" }}%">
                        <div class="bg-light p-3 rounded row">
                         
@@ -41,7 +45,8 @@
                     </div>
 
                     @if (!$comment->reply->isEmpty())
-                        @include('partials.comment', ["comment" => $comment->reply, "count" => $count+1])
+                        @include('partials.comment', ["comments" => $comment->reply, "count" => $count+1, "parent_id" => $comment->id])
                     @endif
                     
                 @endforeach
+            </div>

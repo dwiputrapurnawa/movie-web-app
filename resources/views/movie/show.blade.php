@@ -144,7 +144,7 @@
             <div class="bg-white rounded mt-5 mb-5">
         
                 <div class="bg-dark p-2 rounded-top">
-                    <h6 class="text-white">All Comment</h6>
+                    <h6 class="text-white">All Comment ({{ $movie->comment->count() }})</h6>
                 </div>
         
                 @if ($movie->comment->count() === 0)
@@ -163,7 +163,7 @@
                                 <h6>{{ $comment->user->name }}</h6>
                                 <small class="text-body-secondary">{{ $comment->created_at->diffForHumans() }}</small>
                                 <p>{{ $comment->content }}</p>
-                                <button class="btn-text" value="{{ $comment->id }}">Reply</button>
+                                <button class="btn-text form-toggle" value="{{ $comment->id }}">Reply</button>
                             </div>
 
                             <form id="{{ "commentForm-" . $comment->id }}" action="/comment" method="post" hidden>
@@ -198,7 +198,7 @@
                     </div>
 
                     @if (!$comment->reply->isEmpty())
-                        @include('partials.comment', ["comment" => $comment->reply, "count" => 1])
+                        @include('partials.comment', ["comments" => $comment->reply, "count" => 1, "parent_id" => $comment->id])
                     @endif
 
                 @endforeach
