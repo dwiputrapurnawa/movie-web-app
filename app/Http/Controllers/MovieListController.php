@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\User;
@@ -41,7 +42,8 @@ class MovieListController extends Controller
 
     public function show(Movie $movie) {
         return view("movie.show", [
-            "movie" => $movie
+            "movie" => $movie,
+            "comments" => Comment::where("movie_id", $movie->id)->where("parent_id", null)->get(),
         ]);
         
     }

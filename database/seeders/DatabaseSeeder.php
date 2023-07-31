@@ -19,6 +19,14 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
 
+        User::create([
+            "name" => "Ida Bagus Dwi Putra Purnawa",
+            "email" => "putrapurnawa@gmail.com",
+            "username" => "putrapurnawa",
+            "password" => bcrypt("password"),
+            "is_admin" => 1,
+        ]);
+
         Movie::factory(10)->create();
 
         // Genre::factory(5)->create();

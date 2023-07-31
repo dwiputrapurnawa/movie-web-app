@@ -10,10 +10,15 @@ class CommentController extends Controller
     public function comment(Request $request) {
 
         $validatedData = $request->validate([
-            "user_id" => "required",
             "movie_id" => "required",
             "content" => "required"
         ]);
+
+        $validatedData["user_id"] = auth()->user()->id;
+
+        if($request->parent_id) {
+            $validatedData["parent_id"] = $request->parent_id;
+        }
 
         Comment::create($validatedData);
 

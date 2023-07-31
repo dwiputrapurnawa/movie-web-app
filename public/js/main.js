@@ -15,5 +15,18 @@ $(function() {
 
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+
+    $(".btn-text").on("click", function() {
+        var formId = "#commentForm-" + $(this).val();
+
+        if($(formId).attr("hidden")) {
+            $(formId).removeAttr("hidden");
+        } else {
+            $(formId).attr("hidden", true);
+        }
+    });
+
     
+  
 })

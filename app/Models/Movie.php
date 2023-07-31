@@ -29,10 +29,6 @@ class Movie extends Model
         return $this->hasMany(Rating::class);
     }
 
-    public function scopeMostPopular($query, $filter) {
-        return $query->where("rating", ">=", $filter);
-    }
-
     public function scopeFilter($query, $filter) {
         return $query->where("title", "like", "%" . $filter . "%")->orWhere("synopsis", "like", "%" . $filter . "%");
     }

@@ -128,7 +128,6 @@
                     <div class="p-3">
                         <textarea class="form-control mb-3" id="content" name="content" rows="3"></textarea>
                         <input type="hidden" name="movie_id" value="{{ $movie->id }}">
-                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                         <button class="btn btn-dark" id="postComment" type="submit">Post Comment</button>
                     </div>
                 </form>
@@ -151,22 +150,31 @@
                 @if ($movie->comment->count() === 0)
                 <div class="p-3">
                     <div class="alert alert-info m-3" role="alert">
-                        There is no comment!
+                        Be the first to comment
                     </div>
                 </div>
                 @endif
         
-                @foreach ($movie->comment->sortByDesc("created_at") as $comment)
+                @foreach ($comments->sortByDesc("created_at") as $comment)
                     <div class="p-3">
                        <div class="bg-light p-3 rounded row">
                         
-                        
-                          
                             <div class="col-lg-11">
                                 <h6>{{ $comment->user->name }}</h6>
                                 <small class="text-body-secondary">{{ $comment->created_at->diffForHumans() }}</small>
                                 <p>{{ $comment->content }}</p>
+                                <button class="btn-text" value="{{ $comment->id }}">Reply</button>
                             </div>
+
+                            <form id="{{ "commentForm-" . $comment->id }}" action="/comment" method="post" hidden>
+                                @csrf
+                                <div class="p-3">
+                                    <textarea class="form-control mb-3" id="content" name="content" rows="3"></textarea>
+                                    <input type="hidden" name="movie_id" value="{{ $movie->id }}">
+                                    <input type="hidden" name="parent_id" value="{{ $comment->id }}">
+                                    <button class="btn btn-dark" id="postComment" type="submit">Post Comment</button>
+                                </div>
+                            </form>
 
                             @auth
                                 @if ($comment->user->id === auth()->user()->id)
@@ -186,13 +194,16 @@
                                 </div>
                                 @endif                            
                             @endauth
-
-                            
                        </div>
-
-                       
                     </div>
+
+                    @if (!$comment->reply->isEmpty())
+                        @include('partials.comment', ["comment" => $comment->reply, "count" => 1])
+                    @endif
+
                 @endforeach
+
+
             </div>
         </div>
 

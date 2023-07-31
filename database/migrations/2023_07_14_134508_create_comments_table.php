@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id");
             $table->foreignId("movie_id");
+            $table->foreignId("parent_id")->nullable();
             $table->longText("content");
             $table->timestamps();
         });
