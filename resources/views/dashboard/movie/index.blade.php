@@ -70,7 +70,7 @@
             <td>{{ $movie->title }}</td>
             <td>{{ $movie->duration }}</td>
             <td>{{ $movie->release_date }}</td>
-            <td>{{ $movie->rating }}</td>
+            <td>{{ $movie->rating->avg("value") ?? 0 }}</td>
             <td>{{ $movie->metascore }}</td>
             <td>
                 <a class="badge text-bg-primary text-decoration-none" href="/dashboard/movie/{{ $movie->slug }}">Show</a>

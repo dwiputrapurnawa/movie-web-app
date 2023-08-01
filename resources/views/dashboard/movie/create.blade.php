@@ -68,15 +68,6 @@
       <div class="row">
 
         <div class="col-lg">
-          <div class="mb-3">
-            <label for="rating" class="form-label">Rating</label>
-            <input type="number" class="form-control @error("rating") is-invalid @enderror" id="rating" max="5" min="0" name="rating" value="{{ old("rating") }}" required>
-            @error('rating')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-          </div>
 
           <div class="mb-3">
             <label for="metascore" class="form-label">Metascore</label>
@@ -88,32 +79,30 @@
             @enderror
           </div>
         </div>
-        
-        <div class="col-lg">
-          <div class="mb-3">
-            <label for="duration" class="form-label">Duration</label>
-            <input type="number" class="form-control @error("duration") is-invalid @enderror" id="duration" name="duration" value="{{ old("duration") }}" required>
-            @error('duration')
-            <div class="invalid-feedback">
-              {{ $message }}
+          <div class="col-lg">
+            <div class="mb-3">
+              <label for="duration" class="form-label">Duration</label>
+              <input type="number" class="form-control @error("duration") is-invalid @enderror" id="duration" name="duration" value="{{ old("duration") }}" required>
+              @error('duration')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
             </div>
-            @enderror
           </div>
-
-          <div class="mb-3">
-            <label for="datepicker" class="form-label">Release Date</label>
-            <input type="text" class="form-control @error("release_date") is-invalid @enderror" id="datepicker" placeholder="Select date" name="release_date" value="{{ old("release_date") }}" required>
-            @error('release_date')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-          </div>
-        </div>
 
           
-
         </div>
+
+        <div class="mb-3">
+          <label for="datepicker" class="form-label">Release Date</label>
+          <input type="text" class="form-control @error("release_date") is-invalid @enderror" id="datepicker" placeholder="Select date" name="release_date" value="{{ old("release_date") }}" required>
+          @error('release_date')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>   
 
       <div class="mb-3">
         <label for="synopsis" class="form-label">Synopsis</label>

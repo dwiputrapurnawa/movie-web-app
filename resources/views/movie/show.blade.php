@@ -134,7 +134,7 @@
                 @else
                     <div class="p-3">
                         <div class="alert alert-info m-3" role="alert">
-                            Please Login to leave comment!
+                            Please Login to leave a comment!
                           </div>
                     </div>
                 @endauth

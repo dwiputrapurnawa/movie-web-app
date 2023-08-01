@@ -1,4 +1,4 @@
-            <button class="btn-text replies mb-3" value="{{ $parent_id }}" style="margin-left: {{ $count . "0" }}%">Replies ({{ $comments->count() }})</button>
+            <button class="btn-text replies mb-3" value="{{ $parent_id }}" style="margin-left: {{ $count . "0" }}%"><i class="bi bi-arrow-return-right"></i> View {{ $comments->count() }} more replies</button>
 
             <div class="{{ "reply-container-" . $parent_id }}">
                 @foreach ($comments->sortByDesc("created_at") as $comment)
