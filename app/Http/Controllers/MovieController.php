@@ -39,7 +39,6 @@ class MovieController extends Controller
         
         $validatedData = $request->validate([
             "title" => "required|max:255",
-            "rating" => "required|min:1|max:10",
             "metascore" => "required|min:1|max:100",
             "duration" => "required",
             "release_date" => "required",
@@ -98,7 +97,6 @@ class MovieController extends Controller
 
         $validatedData = $request->validate([
             "title" => "required|max:255",
-            "rating" => "required|min:1|max:10",
             "metascore" => "required|min:1|max:100",
             "duration" => "required",
             "release_date" => "required",

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Show Movie {{ $movie->title }}</h1>
+    <h5>Show Movie {{ $movie->title }}</h5>
 
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -31,11 +31,11 @@
         <h3>{{ $movie->title }}</h3>
         
         <div class="mb-3">
-                        @for ($i = 0; $i < $movie->rating; $i++)
+                        @for ($i = 0; $i < $movie->rating->avg("value"); $i++)
                             <i class="bi bi-star-fill text-warning" style="font-size: 25px"></i>
                         @endfor
 
-                        @for ($i = 0; $i < (5-$movie->rating); $i++)
+                        @for ($i = 0; $i < (5-$movie->rating->avg("value")); $i++)
                             <i class="bi bi-star text-warning" style="font-size: 25px"></i>
                         @endfor
                     </div>
